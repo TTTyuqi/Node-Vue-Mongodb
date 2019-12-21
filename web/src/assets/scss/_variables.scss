@@ -1,0 +1,63 @@
+//定义color
+$colors:(
+    'primary':#db9e3f,
+    'info':#4b67af,
+    'bule':#4394e4,
+    'bule-1':#1f3695,
+    'danger':#791a15,
+    'white':#fff,
+    'black': #000,
+    'dark-1':#343440,
+    'dark':#222,
+    'grry':#999,
+    'grey-1':#666,
+    'lighr':#f9f9f9,
+    'liger-1':#d4d9de
+
+);
+$border-color:map-get($colors , 'liger-1' );
+//font size 
+
+$base-font-size: 1rem;
+$font-size:(
+    xs:0.7692,//10px
+    sm:0.9231,//12px
+    md:1,//13px
+    lg:1.0769,//14px
+    xl:1.2308,//16px
+);
+$flex-jc:(
+    statrt:flex-start,
+    end:flex-end,
+    center:center,
+    between:space-between,
+    around:space-around,
+);
+$flex-ai:(
+    statrt:flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch,
+);
+//spacing
+//0~5个等级 
+//.mt-1  => maring-top
+$spacing-base-size:1rem; //表示基础的空间尺寸的单位
+$spacing-type:(
+    m:margin,
+    p:padding,
+);
+$spacing-directions:(
+    t:top,
+    r:right,
+    b:bottom,
+    l:left,
+);
+$spacing-sizes:(
+    0:0,
+    1:0.25,
+    2:0.5,
+    3:1,
+    4:1.5,
+    5:3,
+);
