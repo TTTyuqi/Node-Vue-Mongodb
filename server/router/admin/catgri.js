@@ -51,7 +51,8 @@ module.exports = (app) => {
     app.post('/admin/api/upload',checktoken(),uploder.single('file'),async (req,res) => {
         // console.log('res',req.file)
         const fileone = req.file
-        fileone.url= `http://localhost:3000/uploader/images/${fileone.filename}`
+        // fileone.url= `http://localhost:3000/uploader/images/${fileone.filename}`
+        fileone.url= `http://gucui.tttyuqi.xyz/uploader/images/${fileone.filename}`
         res.send(fileone)
     })
 
