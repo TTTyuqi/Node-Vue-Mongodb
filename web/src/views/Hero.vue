@@ -26,8 +26,46 @@
           </div>
           <router-link tag='div' to='/' class="text-grry">皮肤 2 &gt;</router-link>
         </div>
-      
       </div>
+    </div>
+    <div class="nav px-6 py-4">
+      <div class="border-bottom d-flex jc-around pb-3" style="margin: 0 auto;width: 100%">
+        <div class="nav-item ml-5 " :class="{active : active === 0}"
+             @click="$refs.list.swiper.slideTo(0)">
+          <div class="nav-link fs-xlg py-2">英雄初识</div>
+        </div>
+        <div class="nav-item mr-5 " :class="{active : active === 1}"
+             @click="$refs.list.swiper.slideTo(1)">
+          <div class="nav-link fs-xlg py-2">进阶攻略</div>
+        </div>
+      </div>
+    </div>
+    <div >
+      <swiper ref="list" :options='{autoHeight :true}'
+              @slide-change="() => active = $refs.list.swiper.realIndex"
+      >
+        <swiper-slide key="0">
+            <div class="px-6 py-4">
+              <div class="border-bottom d-flex jc-around pb-3" style="margin: 0 auto;width: 100%">
+                <div class=" py-4 bg-lighr w-100 mr-3" style="border: 1px solid #f9f9f9;border-radius: 10px">
+                  <div class="d-flex jc-center">
+                    <i class="iconfont icon-menu-1 fs-xlg text-primary mr-4"></i>
+                    <div class="fs-xlg">英雄介绍视频</div>
+                  </div>
+                </div>
+                <div class="py-4 bg-lighr w-100 " style="border: 1px solid #f9f9f9;border-radius: 10px">
+                  <div class="d-flex jc-center">
+                    <i class="iconfont icon-menu-1 fs-xlg text-primary mr-4"></i>
+                    <div class="fs-xlg ">一图识英雄</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </swiper-slide>
+        <swiper-slide key="1">
+          {{active}}
+        </swiper-slide>
+      </swiper>
     </div>
   
   </div>
@@ -39,7 +77,8 @@ export default {
   },
   data () {
     return {
-      moudel:{}
+      moudel:{},
+        active:0,
     }
   },
   methods: {
@@ -47,7 +86,8 @@ export default {
       const data = await this.$http.get(`/hero/${this.id}`)
       console.log('data',data)
       this.moudel = data.data
-    }
+    },
+
   },
   created () {
     this.fech()
@@ -56,6 +96,7 @@ export default {
 </script>
 <style lang='scss'>
 .page-hero{
+  background-color: white;
   .top{
     height: 50vw;
     background: #fff no-repeat top center;
