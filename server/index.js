@@ -11,9 +11,9 @@ app.use(express.json())
 //路由一个静态文件地址，通过输入对应的地址访问里面的资源
 app.use('/uploader/images',express.static(__dirname+'/uploader/images'))
 //路由一个静态后端服务地址，通过输入对应的地址访问里面的资源
-// app.use('/admin',express.static(__dirname+'/admin'))
+app.use('/admin',express.static(__dirname+'/admin'))
 //路由一个静态前端服务地址，通过输入对应的地址访问里面的资源
-// app.use('/',express.static(__dirname+'/web'))
+app.use('/',express.static(__dirname+'/web'))
 //引入连接数据库的接口
 require('./mongodb/db')(app)
 //引入后端adm暴露的接口api
