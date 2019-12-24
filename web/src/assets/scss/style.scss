@@ -81,6 +81,9 @@ p{
     //显示不换行
     white-space: nowrap;
 }
+.fontline{
+    line-height: 1.5rem;
+}
 
 
 @each $typekey,$type in $spacing-type {
@@ -136,6 +139,14 @@ p{
             border-bottom-color:map-get($colors,'primary');
         }
     }
+    .nav-skill{
+        border:3px solid transparent;
+        padding: 0.2rem;
+        &.active{
+            color: map-get($colors,'primary');
+            border-color:map-get($colors,'primary');
+        }
+    }
     &.nav-inverse{
         .nav-item{
             color: map-get($colors, 'white');
@@ -150,6 +161,13 @@ p{
 }
 .h-100{
     height: 100%;
+}
+.skillimage{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff no-repeat top center;
+    background-size: 100% auto;
 }
 
 //sprite

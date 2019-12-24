@@ -28,42 +28,59 @@
         </div>
       </div>
     </div>
-    <div class="nav px-6 py-4">
-      <div class="border-bottom d-flex jc-around pb-3" style="margin: 0 auto;width: 100%">
-        <div class="nav-item ml-5 " :class="{active : active === 0}"
+    <div class="nav px-4 pt-3">
+      <div class="border-bottom d-flex jc-around pb-2" style="margin: 0 auto;width: 100%">
+        <div class="nav-item mx-5 " :class="{active : active === 0}"
              @click="$refs.list.swiper.slideTo(0)">
-          <div class="nav-link fs-xlg py-2">英雄初识</div>
+          <div class="nav-link fs-lg py-1">英雄初识</div>
         </div>
-        <div class="nav-item mr-5 " :class="{active : active === 1}"
+        <div class="nav-item mx-5 " :class="{active : active === 1}"
              @click="$refs.list.swiper.slideTo(1)">
-          <div class="nav-link fs-xlg py-2">进阶攻略</div>
+          <div class="nav-link fs-lg py-1">进阶攻略</div>
         </div>
       </div>
     </div>
     <div >
-      <swiper ref="list" :options='{autoHeight :true}'
+      <swiper ref="list" 
               @slide-change="() => active = $refs.list.swiper.realIndex"
       >
         <swiper-slide key="0">
-            <div class="px-6 py-4">
-              <div class="border-bottom d-flex jc-around pb-3" style="margin: 0 auto;width: 100%">
-                <div class=" py-4 bg-lighr w-100 mr-3" style="border: 1px solid #f9f9f9;border-radius: 10px">
-                  <div class="d-flex jc-center">
-                    <i class="iconfont icon-menu-1 fs-xlg text-primary mr-4"></i>
-                    <div class="fs-xlg">英雄介绍视频</div>
+            <div class="px-3 py-2">
+                <div class=" d-flex jc-around pb-3" style="margin: 0 auto;width: 100%">
+                  <div class=" py-3 bg-lighr w-100 mr-3" style="border: 1px solid #f9f9f9;border-radius: 10px">
+                    <div class="d-flex jc-center">
+                      <i class="iconfont icon-menu-1 fs-xlg text-primary mr-3"></i>
+                      <div class="fs-lg">英雄介绍视频</div>
+                    </div>
+                  </div>
+                  <div class="py-3 bg-lighr w-100 " style="border: 1px solid #f9f9f9;border-radius: 10px">
+                    <div class="d-flex jc-center">
+                      <i class="iconfont icon-menu-1 fs-xlg text-primary mr-3"></i>
+                      <div class="fs-lg">一图识英雄</div>
+                    </div>
                   </div>
                 </div>
-                <div class="py-4 bg-lighr w-100 " style="border: 1px solid #f9f9f9;border-radius: 10px">
-                  <div class="d-flex jc-center">
-                    <i class="iconfont icon-menu-1 fs-xlg text-primary mr-4"></i>
-                    <div class="fs-xlg ">一图识英雄</div>
-                  </div>
-                </div>
-              </div>
+                <hero-skills :skills='moudel.skills'>
+                  <template #skill='{skill}'>
+                    <div class="border-bottom pb-3">
+                      <div class="d-flex ai-center px-2">
+                        <h3 class="mr-4">{{ skill.skiName}}</h3>
+                        <span class="fs-sm text-grry">(冷却值: {{ skill.delay }} 消耗: {{skill.cost}})</span>
+                      </div>
+                      <div class="px-2 ">
+                        <div class="text-dark-1 fontline">{{skill.discription}}</div>
+                      </div>
+                    </div>
+                    <div class="px-2 text-grry py-3 fontline">
+                     小提示: {{skill.tipes}}
+                    </div>
+                  </template>
+                </hero-skills>
             </div>
+       
         </swiper-slide>
         <swiper-slide key="1">
-          {{active}}
+         
         </swiper-slide>
       </swiper>
     </div>
@@ -71,7 +88,11 @@
   </div>
 </template>
 <script>
+import HeroSkills from '../components/HeroSkills'
 export default {
+  components: {
+    HeroSkills
+  },
   props:{
     id:{required: true}
   },
@@ -118,6 +139,7 @@ export default {
       }
     }
   }
+
 
 }
 
