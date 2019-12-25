@@ -36,5 +36,6 @@
     2. 执行命令： mongorestore 恢复dump中的数据
   * 处理图片上传问题
     1. 使用npm install --save multer-aliyun-oss 安装阿里云的云存储
+    2.免费的SSl证书启动HTTPS安全连接---Let’s Encrypt is a free, automated, and open Certificate Authority.
    
    

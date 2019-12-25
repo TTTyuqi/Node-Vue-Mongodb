@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="nav px-4 pt-3">
+    <div class="nav px-4 pt-3" style="background-color: white;">
       <div class="border-bottom d-flex jc-around pb-2" style="margin: 0 auto;width: 100%">
         <div class="nav-item mx-5 " :class="{active : active === 0}"
              @click="$refs.list.swiper.slideTo(0)">
@@ -45,7 +45,7 @@
               @slide-change="() => active = $refs.list.swiper.realIndex"
       >
         <swiper-slide key="0">
-            <div class="px-3 py-2">
+            <div class="px-3 py-2" style="background-color: white;">
                 <div class=" d-flex jc-around pb-3" style="margin: 0 auto;width: 100%">
                   <div class=" py-3 bg-lighr w-100 mr-3" style="border: 1px solid #f9f9f9;border-radius: 10px">
                     <div class="d-flex jc-center">
@@ -77,6 +77,64 @@
                   </template>
                 </hero-skills>
             </div>
+            <hero-items icon="menu-1" :itmes1="moudel.itmes1" :itmes2="moudel.itmes2">
+              <template slot="trips1">
+                <span>小提示: 缺乏回复手段，需要用噬神之书来补充其持续作战的能力，巫术法杖则会让司马懿的刺杀更具爆发力</span>
+              </template>
+              <template slot="trips2">
+                <span>小提示: 利用被动可以洞悉对手位置并且大招也能超越距离发起突袭，综合下来说司马懿非常适合打野位置</span>
+              </template>
+            </hero-items>
+          <div class="px-3 py-2 mt-3" style="background-color: white;">
+            <div>
+              <div class=" d-flex ai-center">
+                <i class="iconfont text-dark-1 icon-menu-1"></i>
+                <h3 class="flex-grow-1 px-2 text-black fs-xxl">使用技巧</h3>
+              </div>
+              <div >
+                <span class="text-dark-1 fontline">{{moudel.usageTips}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-3 py-2 mt-3" style="background-color: white;">
+            <div>
+              <div class=" d-flex ai-center">
+                <i class="iconfont text-dark-1 icon-menu-1"></i>
+                <h3 class="flex-grow-1 px-2 text-black fs-xxl">对抗技巧</h3>
+              </div>
+              <div >
+                <span class="text-dark-1 fontline">{{moudel.attackTips}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-3 py-2 mt-3" style="background-color: white;">
+            <div>
+              <div class=" d-flex ai-center">
+                <i class="iconfont text-dark-1 icon-menu-1"></i>
+                <h3 class="flex-grow-1 px-2 text-black fs-xxl">团战思路</h3>
+              </div>
+              <div >
+                <span class="text-dark-1 fontline">{{moudel.teamTips}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="px-3 py-2 mt-3" style="background-color: white;">
+            <div>
+              <div class=" d-flex ai-center">
+                <i class="iconfont text-dark-1 icon-menu-1"></i>
+                <h3 class="flex-grow-1 px-2 text-black fs-xxl">英雄关系</h3>
+              </div>
+              <div>
+                <span class="fs-xl text-grry-1">最佳搭档</span>
+              </div>
+              <!--<div class="d-flex" >-->
+                <!--<router-link tag="div" :to="`/hero/${item._id}`" v-for="(item,i) in moudel.partners" :key="i" class="p-2">-->
+                  <!--<img :src="item.hero.avatar" class="w-100">-->
+                  <!--<div class="text-center">{{item.description}}</div>-->
+                <!--</router-link>-->
+              <!--</div>-->
+            </div>
+          </div>
        
         </swiper-slide>
         <swiper-slide key="1">
@@ -89,9 +147,11 @@
 </template>
 <script>
 import HeroSkills from '../components/HeroSkills'
+import HeroItems from '../components/HeroItems'
 export default {
   components: {
-    HeroSkills
+    HeroSkills,
+    HeroItems
   },
   props:{
     id:{required: true}
@@ -117,7 +177,7 @@ export default {
 </script>
 <style lang='scss'>
 .page-hero{
-  background-color: white;
+  /*background-color: white;*/
   .top{
     height: 50vw;
     background: #fff no-repeat top center;

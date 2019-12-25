@@ -118,7 +118,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="英雄描述">
-                <el-input type="textarea" v-model="item.discription" placeholder=""></el-input>
+                <el-input type="textarea" v-model="item.description" placeholder=""></el-input>
               </el-form-item>
               <el-form-item label="">
               <el-button type="danger" size="small" @click="model.partners.splice(i,1)">删除</el-button>
