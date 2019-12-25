@@ -46,13 +46,27 @@ module.exports = (app) => {
     //express 本身是获取不到上传的文件的数据，我们需要一个中间件multer来处理上传的数据
     //使用 npm install multer 安装
     const multer = require('multer')
+    //使用multer-aliyun-oss处理图片的上传，使得图片地址成为一个公共地址
+    const MAO = require('multer-aliyun-oss');
     //定义一个上传中间件
-    const uploder = multer({dest: __dirname+'/../../uploader/images'})
+    const uploder = multer(
+        {
+            storage: MAO({
+                config: {
+                    region: 'oss-cn-hongkong',
+                    accessKeyId: 'LTAI4FkVq5zZGpXFGTNLXeaj',
+                    accessKeySecret: 'ldggcPF688ovEJ99UpxbxWGWm30Tkp',
+                    bucket: 'node-image-alioss'
+                }
+            })
+        }
+        // {dest: __dirname+'/../../uploader/images'}
+        )
     app.post('/admin/api/upload',checktoken(),uploder.single('file'),async (req,res) => {
         // console.log('res',req.file)
         const fileone = req.file
         // fileone.url= `http://localhost:3000/uploader/images/${fileone.filename}`
-        fileone.url= `http://gucui.tttyuqi.xyz/uploader/images/${fileone.filename}`
+        // fileone.url= `http://gucui.tttyuqi.xyz/uploader/images/${fileone.filename}`
         res.send(fileone)
     })
 

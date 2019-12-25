@@ -169,7 +169,7 @@ export default {
       model:{
         name:'',
         avatar:'',
-        heros:[],
+
         scores:{
           diffcult:0,
           skill:0,
@@ -179,7 +179,8 @@ export default {
         },
       },
       caterusData:[],
-      itmesData:[]
+      itmesData:[],
+      heros:[],
     }
 
   },

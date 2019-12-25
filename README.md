@@ -34,5 +34,7 @@
   * mongodb 数据库
     1. 使用命令 ：mongodump -d maclendb （对应的数据库名称）导出mongodb中的数据 出现一个dump的文件夹
     2. 执行命令： mongorestore 恢复dump中的数据
+  * 处理图片上传问题
+    1. 使用npm install --save multer-aliyun-oss 安装阿里云的云存储
    
    
