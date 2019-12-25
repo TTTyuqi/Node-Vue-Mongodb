@@ -111,7 +111,7 @@
             <div>
               <div class=" d-flex ai-center">
                 <i class="iconfont text-dark-1 icon-menu-1"></i>
-                <h3 class="flex-grow-1 px-2 text-black fs-xxl">团战思路</h3>
+                <h3 class="flex-grow-1 px-2 text-black fs-xxl ">团战思路</h3>
               </div>
               <div >
                 <span class="text-dark-1 fontline">{{moudel.teamTips}}</span>
@@ -119,20 +119,14 @@
             </div>
           </div>
           <div class="px-3 py-2 mt-3" style="background-color: white;">
-            <div>
+            <div class="py-3">
               <div class=" d-flex ai-center">
                 <i class="iconfont text-dark-1 icon-menu-1"></i>
-                <h3 class="flex-grow-1 px-2 text-black fs-xxl">英雄关系</h3>
+                <h3 class="flex-grow-1 px-2 text-black fs-xxl my-0">英雄关系</h3>
               </div>
-              <div>
-                <span class="fs-xl text-grry-1">最佳搭档</span>
-              </div>
-              <!--<div class="d-flex" >-->
-                <!--<router-link tag="div" :to="`/hero/${item._id}`" v-for="(item,i) in moudel.partners" :key="i" class="p-2">-->
-                  <!--<img :src="item.hero.avatar" class="w-100">-->
-                  <!--<div class="text-center">{{item.description}}</div>-->
-                <!--</router-link>-->
-              <!--</div>-->
+              <hero-relation relation='最佳搭档' :partners='moudel.partners'></hero-relation>
+              <hero-relation relation='被谁克制' :partners='moudel.partners'></hero-relation>
+              <hero-relation relation='克制谁' :partners='moudel.partners'></hero-relation>
             </div>
           </div>
        
@@ -148,10 +142,12 @@
 <script>
 import HeroSkills from '../components/HeroSkills'
 import HeroItems from '../components/HeroItems'
+import HeroRelation from '../components/HeroRelation'
 export default {
   components: {
     HeroSkills,
-    HeroItems
+    HeroItems,
+    HeroRelation
   },
   props:{
     id:{required: true}
@@ -169,6 +165,11 @@ export default {
       this.moudel = data.data
     },
 
+  },
+  watch: {
+    id(){
+      this.fech()
+    }
   },
   created () {
     this.fech()

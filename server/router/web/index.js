@@ -141,7 +141,7 @@ module.exports = (app) => {
     })
     //英雄详情页
     router.get('/hero/:id',async (req,res) => {
-        const heroData = await heroes.findById(req.params.id).populate(['caterorus','itmes1','itmes2',]).lean()
+        const heroData = await heroes.findById(req.params.id).populate(['caterorus','itmes1','itmes2','partners.hero']).lean()
         res.send(heroData)
     })
     app.use('/web/api',router)
