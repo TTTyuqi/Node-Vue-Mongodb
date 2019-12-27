@@ -130,7 +130,6 @@ p{
 }
 .nav{
     display: flex;
-   
     .nav-item{
         border-bottom:3px solid transparent;
         padding-bottom: 0.2rem;
@@ -148,12 +147,15 @@ p{
         }
     }
     &.nav-inverse{
-        .nav-item{
-            color: map-get($colors, 'white');
+        .nav-inverseitem{
+            border-bottom:3px solid transparent;
+            padding-bottom: 0.2rem;
+            &.active{
+                color: map-get($colors, 'white');
+                border-bottom-color:map-get($colors,'white');
+            }
         }
-        &.avtive{
-            border-bottom-color:map-get($colors,'white');
-        }
+
     }
 }
 .w-100{

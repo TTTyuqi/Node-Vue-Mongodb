@@ -10,13 +10,13 @@
   </div>
   <div class="bg-primary py-3 px-4 fs-xl">
     <div class="nav nav-inverse text-white jc-around">
-      <div class="nav-item active">
+      <div class="nav-inverseitem active">
         <router-link class="nav-link" tag='div' to='/'>首页</router-link>
       </div>
-      <div class="nav-item">
+      <div class="nav-inverseitem">
         <router-link class="nav-link" tag='div' to='/'>攻略中心</router-link>
       </div>
-      <div class="nav-item">
+      <div class="nav-inverseitem">
         <router-link class="nav-link" tag='div' to='/'>赛事中心</router-link>
       </div>
     </div>

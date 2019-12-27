@@ -2,62 +2,58 @@
   <div>
       <swiper :options="swiperOption">
         <!-- slides -->
-        <swiper-slide>
-          <img class="w-100" src="../assets/images/a806e41784c93c10cc77d7a146892090.jpeg"/>
-        </swiper-slide>
-        <swiper-slide>
-          <img  class="w-100" src="../assets/images/abc99d524ba1d3ddd1d6c28a8c195c4e.jpeg"/>>
-        </swiper-slide>
-        <swiper-slide>
-          <img  class="w-100" src="../assets/images/6b4891f3eb26069d04b52f83b72f2bf4.jpeg"/>>
-        </swiper-slide>
+          <swiper-slide v-for="(item ,i) in advsCats.itmes" :key="i">
+              <a target="_blank" :href="item.url">
+                <img class="w-100" :src="item.image"/>
+              </a>
+          </swiper-slide>
         <div class="swiper-pagination pagination-home text-right mb-4 pr-4" slot="pagination"></div>
      
       </swiper>
          <!-- end of swiper -->
-         <div class="nav-icons"> 
+         <div class="nav-icons mt-3">
          <div class=" bg-white d-flex flex-wrap pt-3">
-           <div class="nav-items text-center mb-3 text-grey-1" >
+           <a href="http://pvp.qq.com/m/m201706/coming/index.htm" class="nav-items text-center mb-3 text-grey-1" >
               <i class="sprite sprite-news"></i>
               <div class="py-2">爆料站</div>
-           </div>
-            <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+            <a href="https://pvp.qq.com/story201904/index.html#/index"  class="nav-items text-center mb-3 text-grey-1" >
               <i class="sprite sprite-storys"></i>
               <div class="py-2">故事站</div>
-           </div>
-            <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+            <a href="http://pvp.qq.com/mall/m" class="nav-items text-center mb-3 text-grey-1" >
               <i class="sprite sprite-stoys"></i>
               <div class="py-2">周边商城</div>
-           </div>
-           <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+           <a href="http://pvp.qq.com/cp/a20161116tyf/page01.htm"  class="nav-items text-center mb-3 text-grey-1" >
               <i class="sprite sprite-tiyan"></i>
               <div class="py-2">体验服</div>
-           </div>
-             <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+             <a href="http://pvp.qq.com/m/m201606/goCenter.shtml" class="nav-items text-center mb-3 text-grey-1"  v-show="flage">
               <i class="sprite sprite-newpeo"></i>
               <div class="py-2">新人专区</div>
-           </div>
-           <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+           <a href="https://pvp.qq.com/cp/a20181130culture/index.html" class="nav-items text-center mb-3 text-grey-1"  v-show="flage">
               <i class="sprite sprite-honer"></i>
               <div class="py-2">荣耀.传承</div>
-           </div>
-           <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+           <a href="http://pvp.qq.com/m/wzmnzm/index.html" class="nav-items text-center mb-3 text-grey-1"  v-show="flage">
               <i class="sprite sprite-battel"></i>
               <div class="py-2">模拟战资料库</div>
-           </div>
-          <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+          <a  href="http://pvp.qq.com/cp/a20190827boundlessp/index.html" class="nav-items text-center mb-3 text-grey-1"  v-show="flage">
               <i class="sprite sprite-home"></i>
               <div class="py-2">王者营地</div>
-           </div>
-          <div class="nav-items text-center mb-3 text-grey-1" >
+           </a>
+          <a class="nav-items text-center mb-3 text-grey-1"  v-show="flage">
               <i class="sprite sprite-wechat"></i>
               <div class="py-2">公众号</div>
-           </div>
+           </a>
 
          </div>
-         <div class="bg-lighr py-2 fs-sm text-center">
+         <div class="bg-lighr py-2 fs-sm text-center" @click="flage =!flage">
            <i class="sprite sprite-arrow mr-2"></i>
-           <span>收起</span>
+           <span>{{flage === true?'收起':'展开'}}</span>
          </div>
          </div>
          <!-- end of nav icons -->
@@ -107,8 +103,10 @@ export default {
             el: '.pagination-home'
           }
         },
+        flage:true,
         newCats:[],
         heroCats:[],
+        advsCats:{},
     }
   },
   methods: {
@@ -119,9 +117,15 @@ export default {
     async feactherosList(){
       const hero = await this.$http.get('/heroes/list')
       this.heroCats = hero.data
-    }
+    },
+      async feachads(){
+        const advs = await this.$http.get('/advs/list')
+          this.advsCats = advs.data
+          console.log('advs',this.advsCats)
+      }
   },
   created () {
+      this.feachads()
     this.feactnewsList()
     this.feactherosList()
   }

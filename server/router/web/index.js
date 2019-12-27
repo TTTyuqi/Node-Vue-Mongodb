@@ -4,6 +4,7 @@ module.exports = (app) => {
     const Caterory = mongose.model('Catrgory')
     const aritcle = mongose.model('Article')
     const heroes = mongose.model('Hero')
+    const adv = mongose.model('Ad')
     //初始化文章数据
     router.get('/news/init',async (req,res) => {
         const partent = await Caterory.findOne({
@@ -143,6 +144,11 @@ module.exports = (app) => {
     router.get('/hero/:id',async (req,res) => {
         const heroData = await heroes.findById(req.params.id).populate(['caterorus','itmes1','itmes2','partners.hero']).lean()
         res.send(heroData)
+    })
+    //home广告页
+    router.get('/advs/list',async (req,res) => {
+        const ads = await adv.findOne({name:'首页幻灯片广告'}).lean()
+        res.send(ads)
     })
     app.use('/web/api',router)
 }
